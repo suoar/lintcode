@@ -1,0 +1,2 @@
+lintcode刷题记录
+javascript语言版
