@@ -2,21 +2,19 @@
  * 155.二叉树的最小深度
  */
 const minDepth = function (root) {
-  if(!root){
+  if (root === null) {
     return 0
   }
-  if(isLeaf(root)){
+  if (root.left === null && root.right === null) {
     return 1
   }
-  if(root.left !== null && isLeaf(left)){
-    return 2
-  } else if(root.right !== null && isLeaf(root.right)){
-    return 2
-  } else {
-    return 1 + Math.min(minDepth(root.left),minDepth(root.right))
+  if (root.left === null) {
+    return minDepth(root.right) + 1
   }
+  if (root.right === null) {
+    return minDepth(root.left) + 1
+  }
+  return Math.min(minDepth(root.left), minDepth(root.right)) + 1
+
 }
 
-const isLeaf = function (treeNode) {
-  return !(treeNode.left || treeNode.right)
-}
